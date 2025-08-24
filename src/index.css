@@ -1,0 +1,89 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom base styles that integrate with Tailwind */
+@layer base {
+  /* CSS variables for easy theming */
+  :root {
+    --font-sans: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    --line-height: 1.5;
+    --font-weight-normal: 400;
+
+    /* default (dark-first) theme values */
+    --bg: #242424;
+    --text: rgba(255, 255, 255, 0.87);
+    --link: #646cff;
+    --link-hover: #535bf2;
+    --button-bg: #1a1a1a;
+  }
+
+  /* If user prefers light theme, override variables */
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #ffffff;
+      --text: #213547;
+      --link-hover: #747bff;
+      --button-bg: #f9f9f9;
+    }
+  }
+
+  /* Basic element defaults */
+  html, body, #root {
+    height: 100%;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    line-height: var(--line-height);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    color-scheme: light dark;
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+    color: var(--text);
+    background-color: var(--bg);
+    /* keep Tailwind's sensible defaults (font smoothing, etc.) */
+    @apply antialiased;
+  }
+
+  a {
+    font-weight: 500;
+    color: var(--link);
+    text-decoration: inherit;
+  }
+  a:hover {
+    color: var(--link-hover);
+  }
+
+  h1 {
+    font-size: 3.2em;
+    line-height: 1.1;
+  }
+
+  button {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: var(--button-bg);
+    cursor: pointer;
+    transition: border-color 0.25s;
+  }
+  button:hover {
+    border-color: var(--link);
+  }
+  button:focus,
+  button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+  }
+}
